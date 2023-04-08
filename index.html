@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      text-align: center;
+    }
+
+    div {
+      width: 400px;
+      height: 150px;
+      background-color: #f8eaea;
+      margin: 20px auto;
+      padding: 10px;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <script>
+    var arr1 = []; //입력받은 전체 숫자 배열
+    var arr2 = []; //짝수 숫자 배열
+
+
+    var numCount = Number(prompt('몇 개의 숫자를 입력하시겠습니까?', '0'));
+    if (isNaN(numCount) == true || ((numCount * 10) % 10 != 0) == true){
+      alert('[!] 문자 및 소수점 입력 불가');
+      location.reload();
+    } else {
+      i=numCount;
+      while(i > arr1.length){
+        var inputNum = Number(prompt(numCount + ' 개의 숫자를 입력해주세요', ''));
+
+        if(isNaN(inputNum) == true || ((inputNum * 10) % 10 != 0) == true){
+          alert('[!] 문자 및 소수점 입력 불가');                    
+        }else{          
+          arr1.push(inputNum);
+        }       
+      }
+    }
+
+    for (let i = 0; i < numCount; i++) {
+      if (arr1[i] % 2 == 0) {
+        arr2.push(arr1[i]);
+      }
+    }
+
+    function sum(ele) {
+      let sum = 0;
+      for (i = 0; i < ele.length; i++) {
+        sum += ele[i];
+      }
+      return (sum);
+    }
+
+    document.write('<h3> 숫자를 받아서 짝수 합계 구하기</h3>')
+    document.write('<div id="numList"> 받은 숫자 목록 : ' + arr1 + '</div>');
+    document.write('<div id="evenNumList"> 짝수 합계 : ' + sum(arr2) + '</div>');
+    document.write('<button id="btn">새로 계산하기</button>')
+
+    btn.onclick = function () {
+      location.reload();
+    }
+  </script>
+
+
+</body>
+
+</html>
